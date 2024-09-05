@@ -9,5 +9,6 @@ def run_bot():
 
 @app.get("/")
 async def handle_root():
-    threading.Thread(target=run_bot, daemon=True).start()
+    thread = threading.Thread(target=run_bot, daemon=True)
+    thread.start()
     return {"message": "Bot is running"}
