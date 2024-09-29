@@ -1,14 +1,33 @@
 from fastapi import FastAPI
-import threading
-import os
+from multiprocessing import Process
+import time
+from main import main
+import asyncio
 
 app = FastAPI()
 
-def run_bot():    
-    os.system("python main.py")
+# Function to run another Python file's logic
+def run_forever():
+    asyncio.run(main())
 
+# Function to start the background process
+def start_process():
+    p = Process(target=run_forever)
+    p.start()
+    return p
+
+# Route for testing server is alive
 @app.get("/")
-async def handle_root():
-    thread = threading.Thread(target=run_bot, daemon=True)
-    thread.start()
-    return {"message": "Bot is running"}
+async def root():
+    return {"status": "ok"}
+
+if __name__ == "__main__":
+    # Start the background process
+    process = start_process()
+
+    # Run the FastAPI server
+    import uvicorn
+    uvicorn.run(app)
+
+    # Join the process when the server stops
+    process.join()

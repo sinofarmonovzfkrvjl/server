@@ -2,7 +2,7 @@ from aiogram import Bot, Dispatcher, types
 import asyncio
 from aiogram.filters import CommandStart
 
-bot = Bot(token='7436824817:AAE6g7Ecj-B0HVWT58t_VefKFDMibk4BfMU')
+bot = Bot(token='7596605488:AAHUBAtgxNIjRWzNW1-J79LCp2NcJVHyRzA')
 dp = Dispatcher()
 
 @dp.message(CommandStart())
@@ -16,5 +16,5 @@ async def startup():
 async def main():
     await dp.start_polling(bot)
 
-if __name__=='__main__':
-    asyncio.run(main())
+# if __name__=='__main__':
+#     asyncio.run(main())
