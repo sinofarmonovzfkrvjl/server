@@ -1,5 +1,4 @@
 from aiogram import Bot, Dispatcher, types
-import asyncio
 from aiogram.filters import CommandStart
 
 bot = Bot(token='7596605488:AAHUBAtgxNIjRWzNW1-J79LCp2NcJVHyRzA')
